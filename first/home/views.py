@@ -17,6 +17,9 @@ def home(request):
     all_records=User.objects.first()
     print(f"User:{User.location}")
 
+    services=Service.objects.all()
+    testimonial=Testimonial.objects.all()
+
     
     # for i in all_records:
     #     print(i.email)
@@ -42,8 +45,8 @@ def home(request):
         "linkedin_url":all_records.linkedin_url,
         "github_url":all_records.github_url,
 
-        "Service":Service,
-        "Testimonial":Testimonial
+        "services":services,
+        "testimonial":testimonial,
     }
     print(f"context :{context}")
 

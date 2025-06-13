@@ -20,9 +20,9 @@ class User(models.Model):
 
 
 class Service(models.Model):
-    icon=models.CharField(max_length=255, blank=True, null=True)
-    title=models.CharField(max_length=50, blank=True, null=True)
-    description=models.TextField(max_length=255, unique=True)
+    icon=models.CharField(max_length=50, blank=True, null=True)
+    title=models.CharField(max_length=250, blank=True, null=True)
+    description=models.TextField()
 
     def __str__(self):
         return self.title

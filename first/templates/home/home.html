@@ -39,50 +39,7 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
-  <section id="topbar" class="topbar d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="{{email}}">{{email}}</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{phone}}</span></i>
-      </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="{{github_url}}" class="twitter"><i class="bi bi-github"></i></a>
-        <a href="{{facebook_url}}" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="{{instagram_url}}" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="{{linkedin_url}}" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-    </div>
-  </section><!-- End Top Bar -->
-
-  <header id="header" class="header d-flex align-items-center">
-
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="home.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{% static 'assets/img/logo.png' %}" alt=""> -->
-        <h1>PYcon<span>.</span></h1>
-      </a>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Portfolio</a></li>
-        </ul>
-      </nav><!-- .navbar -->
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
-
+  {% include "home/header.html" %}
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="container position-relative">
@@ -107,9 +64,8 @@
   <!-- End Hero Section -->
 
   <main id="main">
-
-
-    <!-- ======= Our Services Section ======= -->
+  
+   <!-- ======= Our Services Section ======= -->
     <section id="services" class="services sections-bg">
       <div class="container" data-aos="fade-up">
 
@@ -118,11 +74,11 @@
         </div>
 
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-
+          {% for service in services%}
           <div class="col-lg-4 col-md-6">
             <div class="service-item  position-relative">
               <div class="icon">
-                <i class="{{icon}}"></i>
+                <i class="{{service.icon}}"></i>
               </div>
               <h3>Digital Marketing Mastery</h3>
               <p>Elevate your online presence with our comprehensive digital marketing solutions.</p>
@@ -178,7 +134,7 @@
               <p>Navigate the complexities of business with our strategic consultancy services. We offer tailored solutions to optimize your operations, enhance efficiency, and fuel sustainable growth.</p>
             </div>
           </div><!-- End Service Item -->
-
+          {% endfor %}
         </div>
 
       </div>
@@ -506,28 +462,11 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section><!-- End Contact Section --> 
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-    <div class="container mt-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PYcon</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">NEEraj</a>
-      </div>
-    </div>
-
-  </footer><!-- End Footer -->
-  <!-- End Footer -->
+  {% include "home/footer.html" %}
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
