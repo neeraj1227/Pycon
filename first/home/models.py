@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
 #create  your models here
+
+# User Model 
 class User(models.Model):
     first_name = models.CharField(max_length=50,default="name")
     last_name = models.CharField(max_length=50,default="name")
@@ -17,7 +19,7 @@ class User(models.Model):
     def __str__(self):
         return self.first_name
    
-
+#Service Model
 
 class Service(models.Model):
     icon=models.CharField(max_length=50, blank=True, null=True)
@@ -26,18 +28,30 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
-
+#Testimonail Model
 
 class Testimonial(models.Model):
     image=models.CharField( max_length=255,blank=True, null=True)
-    rate = models.IntegerField(
-        validators=[MinValueValidator(1),MaxValueValidator(5)]
-    )
+    star_count=[
+        (1, 'One'),
+        (2, 'Two'),
+        (3, 'Three'),
+        (4, 'Four'),
+        (5, 'Five'),
+    ]
+    rate = models.IntegerField( choices=star_count)
     name=models.CharField(max_length=20)
     profession=models.CharField(max_length=20)
     description=models.TextField()
 
     def __str__(self):
-        return self.profession
+        return f"{self.profession}-{self.profession}"
 
 
+
+
+# class Contact(models.Model):
+#     location=models.CharField(max_length=50)
+#     email=models.EmailField()
+#     phone=models.CharField(max_length=12)
+#     open_hours=models.TimeField(auto_now=False, auto_now_add=False)

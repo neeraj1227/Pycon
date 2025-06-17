@@ -66,11 +66,12 @@
   <main id="main">
   
    <!-- ======= Our Services Section ======= -->
+    <!-- ===== Services Section ====== -->
     <section id="services" class="services sections-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Our Services</h2>
+          <h2>Services</h2>
         </div>
 
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
@@ -80,58 +81,8 @@
               <div class="icon">
                 <i class="{{service.icon}}"></i>
               </div>
-              <h3>Digital Marketing Mastery</h3>
-              <p>Elevate your online presence with our comprehensive digital marketing solutions.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <h3>Public Relations Powerhouse</h3>
-              <p>Shape your narrative and build strong relationships with our public relations expertise. From crafting compelling press releases to managing crisis communications, we help you maintain a positive public image.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <h3>Creative Design Solutions</h3>
-              <p>Unleash the potential of visually stunning design. Our creative team specializes in crafting compelling graphics, logos, and branding materials that captivate your audience.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <h3>Web Development Wizardry</h3>
-              <p>Transform your digital footprint with our expert web development services. Whether you need a responsive website, e-commerce platform, or custom web application.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <h3>Data Analytics Excellence</h3>
-              <p>Unlock the power of data with our advanced analytics services. From gathering valuable insights to making data-driven decisions, our analytics team is equipped to turn raw data into actionable intelligence.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <h3>Strategic Consultancy Services</h3>
-              <p>Navigate the complexities of business with our strategic consultancy services. We offer tailored solutions to optimize your operations, enhance efficiency, and fuel sustainable growth.</p>
+              <h3>{{service.title}}</h3>
+              <p>{{service.description}}</p>
             </div>
           </div><!-- End Service Item -->
           {% endfor %}
@@ -147,54 +98,39 @@
         <div class="section-header">
           <h2>Testimonials</h2>
         </div>
-
+        
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
+            {% for testimonials in testimonial %}
+    
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
                   <div class="d-flex align-items-center">
-                    <img src="{{image}}" class="testimonial-img flex-shrink-0" alt="">
+                    {% comment %} {% if "http" in testimonial.image %}
+                      <img src="{{testimoinals.image }}" class="testimonial-img flex-shrink-0" alt="">
+                    {% else %} {% endcomment %}
+                      <img src="{% static testimoinals.image %}" class="testimonial-img flex-shrink-0" alt="">
+                    {% comment %} {% endif %} {% endcomment %}
                     <div>
-                      <h3>{{name}}</h3>
-                      <h4>Ceo &amp; Founder</h4>
+                      <h3>{{testimonials.name}}</h3>
+                      <h4>{{testimonials.profession}}</h4>
                       <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        {% for i in 'x'|ljust:testimonials.rate %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Working with [Your Agency Name] was a game-changer for our business. Their team's strategic approach and attention to detail significantly boosted our online presence. They're not just an agency; they're a partner dedicated to our success.
+                    {{testimonials.description}}
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img flex-shrink-0" alt="">
-                    <div>
-                      <h3>Adam</h3>
-                      <h4>Designer</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    Incredible results, exceptional service! [Your Agency Name] delivered beyond our expectations. Their creativity and expertise transformed our marketing strategy, resulting in increased leads and revenue. Highly recommended.
-                    <i class="bi bi-quote quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
+            {% endfor %}
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -462,7 +398,7 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section --> 
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 

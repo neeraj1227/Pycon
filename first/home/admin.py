@@ -30,12 +30,16 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     list_display=[
-        'image',
-        'rate',
+        
         'name',
         'profession',
-        'description',
+        'display_rating',
+       
     ]
+
+    def display_rating(self,obj):
+        return '*'* obj.rate
+    
     #show  to disable and permission
     # def has_add_permission(self, request, obj=None):
     #     return False
