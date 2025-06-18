@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # from django.http import HttpResponseRedirect
-from .models import User,Service,Testimonial
+from .models import User,Service,Testimonial,FAQ
 from django.db import connection
 # from home.views import home
 
@@ -19,6 +19,7 @@ def home(request):
 
     services=Service.objects.all()
     testimonial=Testimonial.objects.all()
+    faqs=FAQ.objects.all()
 
     
     # for i in all_records:
@@ -47,10 +48,9 @@ def home(request):
 
         "services":services,
         "testimonial":testimonial,
+        "faqs":faqs
     }
-    print(f"context :{context}")
-
-
+    
     return render(request, 'home/home.html',context)
 
 # def contact(request):

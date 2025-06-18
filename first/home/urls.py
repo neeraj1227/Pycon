@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-# from .views import home
+from .views import home
 
 
 urlpatterns = [
-    # path('', views.home, name='home'),
-    # path('contact/', views.contact, name='contact'),
-    # path('about/', views.about, name='about'),
-    #  #home page
-]
+#     path('', home, name='home'),
+#     #  #home page
+#     path('admin/',admin.site.urls),
+ ]

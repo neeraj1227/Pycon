@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from home.views import home
+from home.views import home,contact_form
 # from django.http import HttpResponseRedirect
 # def go_to_github(request):
 #     return HttpResponseRedirect('https://github.com/')
@@ -30,7 +30,7 @@ urlpatterns = [
     # path('github/', go_to_github, name='github_redirect'),
     # path('about/',)
     # path("__reload__/", include("django_browser_reload.urls"))
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 
 
 

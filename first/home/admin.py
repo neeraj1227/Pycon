@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import User,Service,Testimonial
+from home.models import User,Service,Testimonial,FAQ
 
 # admin.site.register(Student)
 # admin.site.register(Musician)
@@ -39,6 +39,12 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     def display_rating(self,obj):
         return '*'* obj.rate
+    
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display=[
+        'question'
+    ]
     
     #show  to disable and permission
     # def has_add_permission(self, request, obj=None):
