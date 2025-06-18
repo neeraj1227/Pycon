@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # from django.http import HttpResponseRedirect
 from .models import User,Service,Testimonial,FAQ
 from django.db import connection
+from django.core.mail import send_mail
+from django.conf import settings
 # from home.views import home
 
 
@@ -50,12 +52,30 @@ def home(request):
         "testimonial":testimonial,
         "faqs":faqs
     }
-    
+
     return render(request, 'home/home.html',context)
 
-# def contact(request):
-    
-#     return render(request,'home/contact.html',context ={'page':"contact"})
+def contact_form(request):
+    if request.method == 'POST':
+        print("\nUser has submit a contect form\n")
+        print(f"request.POST: {request}")
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
 
-# def about(request):
-#     return render(request,"home/about.html",context ={'page':"about"}) 
+        print(f"name : {name}")
+        print(f"email :{email}")
+        print(f"subject :{subject}")
+        print(f"message :{message}")
+        
+        send_mail(
+            subject=subject,
+            message=f"{name}-{email}-{message}",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[settings.EMAIL_HOST_USER] ,
+            fail_silently=False  #default Is True
+        )
+
+
+    return redirect ('home')

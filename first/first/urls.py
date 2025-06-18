@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name='home'),
     path('',include('home.urls')),
+    path('contact/', contact_form,name="contact_form")
     # path('github/', go_to_github, name='github_redirect'),
     # path('about/',)
     # path("__reload__/", include("django_browser_reload.urls"))
