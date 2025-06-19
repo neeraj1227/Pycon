@@ -54,7 +54,7 @@ def home(request):
     }
 
     return render(request, 'home/home.html',context)
-
+# User send the request to on backend
 def contact_form(request):
     if request.method == 'POST':
         print("\nUser has submit a contect form\n")
@@ -69,6 +69,7 @@ def contact_form(request):
         print(f"subject :{subject}")
         print(f"message :{message}")
         
+#ending email to reciver   
         send_mail(
             subject=subject,
             message=f"{name}-{email}-{message}",
