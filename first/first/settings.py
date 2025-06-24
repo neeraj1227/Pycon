@@ -142,7 +142,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'enderiksdjkd@gmail.com'
-EMAIL_HOST_PASSWORD = 'srqlfkbohjoreaws' #app passwordos.environ.get
+EMAIL_HOST_PASSWORD = 'kujd idum dknr qzrd' #app passwordos.environ.get
 
 # TAILWIND_APP_NAME='theme'
 # Default primary key field type

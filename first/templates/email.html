@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMAIL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .header {
+      background-color: #007bff;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+    .content {
+      padding: 20px;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .footer {
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #777777;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <!-- Header Section -->
+    <div class="header">
+      <h1>Welcome To PYcon</h1>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <p><strong>Name : </strong>{{name}}</p>
+      <p><strong>Email : </strong>{{email}}</p>
+      <p><strong>Subject : </strong>{{subject}}}</p>
+      <p><strong>Message : </strong>{{message}}</p>
+      <p>If you have any questions, feel free to reply to this email or contact us at <a href="mailto: enderiksdjkd@gmail.com">enderiksdjkd@gmail.com</a>.</p>
+      <p>Best regards,</p>
+      <p> Neeraj <br> FullStack Dev <br> PYcon</p>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+      <p>&copy; 2025 PYcon. All rights reserved.</p>
+      <p><a href="#">Unsubscribe</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+  </div>
+</body>
+</html>

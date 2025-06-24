@@ -4,6 +4,7 @@ from .models import User,Service,Testimonial,FAQ
 from django.db import connection
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
 # from home.views import home
 
 
@@ -58,7 +59,7 @@ def home(request):
 def contact_form(request):
     if request.method == 'POST':
         print("\nUser has submit a contect form\n")
-        print(f"request.POST: {request}")
+        print(f"request.POST: {request.POST}")
         name=request.POST.get('name')
         email=request.POST.get('email')
         subject=request.POST.get('subject')
@@ -68,11 +69,21 @@ def contact_form(request):
         print(f"email :{email}")
         print(f"subject :{subject}")
         print(f"message :{message}")
+
+#context for email
+        context={
+            "name":name,
+            "email":email,
+            "subject":subject,
+            "message":message,
+        }
+        html_content=render_to_string('email.html',context)
         
-#ending email to reciver   
+#sending email to reciver   
         send_mail(
             subject=subject,
-            message=f"{name}-{email}-{message}",
+            message=None,
+            html_message=html_content,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[settings.EMAIL_HOST_USER] ,
             fail_silently=False  #default Is True
