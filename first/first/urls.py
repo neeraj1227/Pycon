@@ -31,7 +31,6 @@ urlpatterns = [
     # path('github/', go_to_github, name='github_redirect'),
     # path('about/',)
     # path("__reload__/", include("django_browser_reload.urls"))
-]+ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
-
+]+ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)#+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 

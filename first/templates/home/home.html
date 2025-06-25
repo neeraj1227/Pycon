@@ -39,6 +39,21 @@
 </head>
 
 <body>
+  {% for message in messages %}
+    {% if message.tags == "error" %}
+    <div class="alert alert-danger alert-dismissible fade show sticky-alert" role="alert">
+      {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% else %}
+        <div class="alert alert-success alert-dismissible fade show sticky-alert" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+
   {% include "home/header.html" %}
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">

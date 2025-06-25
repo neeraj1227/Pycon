@@ -5,6 +5,7 @@ from django.db import connection
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.contrib import messages
 # from home.views import home
 
 
@@ -80,14 +81,19 @@ def contact_form(request):
         html_content=render_to_string('email.html',context)
         
 #sending email to reciver   
-        send_mail(
-            subject=subject,
-            message=None,
-            html_message=html_content,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[settings.EMAIL_HOST_USER] ,
-            fail_silently=False  #default Is True
-        )
+        try:
+            send_mail(
+                subject=subject,
+                message=None,
+                html_message=html_content,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER] ,
+                fail_silently=False  #default Is True
+            )
+        except Exception as e:
+            messages.error(request,'email is failed')
+        else:
+            messages.success(request,'email is successfully send')
 
 
     return redirect ('home')
