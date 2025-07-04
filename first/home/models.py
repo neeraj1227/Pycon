@@ -58,10 +58,18 @@ class FAQ(models.Model):
         return self.question
 
 
+#ContactLog Details
+class Contact_log(models.Model):
+    name=models.CharField(max_length=255)
+    subject=models.CharField(max_length=255)
+    email=models.CharField(max_length=255)
+    message=models.TextField()
+    action_time=models.DateTimeField(blank=True,null=True)
+    is_error=models.BooleanField(default=False)
+    is_success=models.BooleanField(default=False)
+    error_message=models.TextField(null=True,blank=True)
 
+    def __str__(self):
+        return self.email
+    
 
-# class Contact(models.Model):
-#     location=models.CharField(max_length=50)
-#     email=models.EmailField()
-#     phone=models.CharField(max_length=12)
-#     open_hours=models.TimeField(auto_now=False, auto_now_add=False)

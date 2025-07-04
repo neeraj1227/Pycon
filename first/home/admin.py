@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import User,Service,Testimonial,FAQ
+from home.models import User,Service,Testimonial,FAQ,Contact_log
 
 # admin.site.register(Student)
 # admin.site.register(Musician)
@@ -44,6 +44,18 @@ class TestimonialAdmin(admin.ModelAdmin):
 class FAQAdmin(admin.ModelAdmin):
     list_display=[
         'question'
+    ]
+
+
+@admin.register(Contact_log)
+class Contact_logAdmin(admin.ModelAdmin):
+    list_display =[
+        'name',
+        'email',
+        'is_error',
+        'is_success',
+        'action_time',
+        
     ]
     
     #show  to disable and permission

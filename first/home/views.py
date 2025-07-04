@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 # from django.http import HttpResponseRedirect
-from .models import User,Service,Testimonial,FAQ
+from .models import User,Service,Testimonial,FAQ,Contact_log
 from django.db import connection
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib import messages
+from django.utils import timezone
 # from home.views import home
 
 
@@ -79,6 +80,10 @@ def contact_form(request):
             "message":message,
         }
         html_content=render_to_string('email.html',context)
+
+        is_success=False
+        is_error=False
+        error_message=""
         
 #sending email to reciver   
         try:
@@ -91,9 +96,23 @@ def contact_form(request):
                 fail_silently=False  #default Is True
             )
         except Exception as e:
+            is_error=True
+            error_message=str(e)
             messages.error(request,'email is failed')
         else:
+            is_success=True
             messages.success(request,'email is successfully send')
+
+        Contact_log.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+            action_time=timezone.now(),
+            is_success=is_success,
+            is_error=is_error,
+            error_message=error_message
+            )
 
 
     return redirect ('home')
