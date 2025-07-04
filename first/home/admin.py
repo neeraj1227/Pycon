@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import User,Service,Testimonial,FAQ,Contact_log
+from home.models import User,Service,Testimonial,FAQ,Contact_log,Author,blog_post
 
 # admin.site.register(Student)
 # admin.site.register(Musician)
@@ -57,7 +57,23 @@ class Contact_logAdmin(admin.ModelAdmin):
         'action_time',
         
     ]
-    
+
+
+#blog register
+@admin.register(blog_post)
+class blog_postAdmin(admin.ModelAdmin):
+    list_display=[
+        'category',
+        'title',
+        'blog_image',
+        'create_at'
+    ]
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display=[
+        'first_name'
+                 ]
     #show  to disable and permission
     # def has_add_permission(self, request, obj=None):
     #     return False
